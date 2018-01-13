@@ -4,23 +4,27 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Controller.ContactsController;
+
 
 public class ContactsListListenener implements ListSelectionListener{
 
 	AdresseBook book;
+	ContactsController contactsController;
 	
-	public ContactsListListenener(AdresseBook b) {
+	public ContactsListListenener(AdresseBook b, ContactsController c) {
 		book = b;
-	}
-	
+		contactsController = c;
+	}	
+	//todo : nom géré dans le model directement
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		JList item = (JList) e.getSource();
+		JList<String> item = (JList<String>) e.getSource();
 		if (!e.getValueIsAdjusting()) {
-			for (Object s : book.getContacts().keySet()) {
+			for (Object s : contactsController.getContacts().keySet()) {
 				if (s.equals(item.getSelectedValue())) {
-					book.nom = (String) s;
-					book.infos.setText(book.getContacts().getProperty(book.nom));
+					contactsController.setNomSelect((String) s);
+					book.infos.setText(contactsController.getContacts().getProperty((String) s));
 				}
 			}
 		}

@@ -6,12 +6,20 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import Controller.ContactsController;
+
 public class WindowsListener extends JFrame implements WindowListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	AdresseBook book;
+	ContactsController contactsController;
 
-	public WindowsListener(AdresseBook adresseBook) {
-		book = adresseBook;
+	public WindowsListener(AdresseBook b, ContactsController c) {
+		book = b;
+		contactsController = c;
 	}
 
 	@Override
@@ -24,7 +32,7 @@ public class WindowsListener extends JFrame implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		if (book.getChange()) {
+		if (contactsController.getChange()) {
 			Object[] options = { "Oui", "Non", "Annuler" };
 			int n = JOptionPane.showOptionDialog(this,
 					"Sauvegarder les changements ?", "Selectionner une option",
@@ -34,7 +42,7 @@ public class WindowsListener extends JFrame implements WindowListener {
 					options, // the titles of buttons
 					options[0]); // default button title
 			if (n == 0) {
-				book.enregistrer();
+				contactsController.enregistrer();
 				book.dispose();
 				System.exit(0);
 			} else {

@@ -2,7 +2,6 @@ package View;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
@@ -11,9 +10,11 @@ import Controller.ContactsController;
 public class Ajouter implements ActionListener {
 
 	ContactsController contactsController;
+	AdresseBook book;
 
-	public Ajouter(ContactsController c) {
+	public Ajouter(AdresseBook b, ContactsController c) {
 		contactsController = c;
+		book = b;
 	}
 
 	@Override
@@ -25,6 +26,7 @@ public class Ajouter implements ActionListener {
 		}
 		if (valeur != null && !valeur.trim().isEmpty()) {
 			contactsController.ajouterContacts(nom, valeur);
+			book.setListData();
 		}
 	}
 }

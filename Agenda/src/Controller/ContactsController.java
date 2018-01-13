@@ -1,11 +1,5 @@
 package Controller;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Collections;
 import java.util.Properties;
 import java.util.Vector;
 
@@ -28,25 +22,17 @@ public class ContactsController {
 	public void afficherP(Properties p) {
 		manager.afficherP(p);
 	}
-
-	public void modifierP(Properties p, String key, String value) {
-		manager.modifierP(p, key, value);
-	}
 	
-	public void modifierContact(String value, String key) {
-		manager.modifierContact(value, key);
+	public void modifierContact(String value) {
+		manager.modifierContact(value);
 	}
 
-	public void ajouterP(Properties p, String key, String value) {
-		manager.ajouterP(p, key, value);
-	}
-	
 	public void ajouterContacts(String key, String value) {
 		manager.ajouterContacts(key, value);
 	}
 
-	public void supprimerP(Properties p, String key) {
-		manager.supprimerP(p, key);
+	public void supprimerContacts() {
+		manager.supprimerContacts();
 	}
 
 	public void enregistrer() {
@@ -61,11 +47,23 @@ public class ContactsController {
 		manager.setChange(newChange);
 	}
 	
+	public String getNomSelect() {
+		return manager.getNomSelect();
+	}
+	
+	public void setNomSelect(String newNomSelect) {
+		manager.setNomSelect(newNomSelect);
+	}
+	
 	public Properties getContacts() {
 		return manager.getContacts();
 	}
 	
 	public Vector<String> getListNoms() {
 		return manager.getListNoms();
+	}
+
+	public void setEnable(JButton saveBtn) {
+		saveBtn.setEnabled(getChange());
 	}
 }

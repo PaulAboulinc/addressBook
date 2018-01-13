@@ -12,16 +12,17 @@ class PopUpListener extends MouseAdapter {
 	}
 
 	public void mousePressed(MouseEvent e){
-        if (e.isPopupTrigger())
             doPop(e);
     }
 
     public void mouseReleased(MouseEvent e){
-        if (e.isPopupTrigger())
             doPop(e);
     }
 
     private void doPop(MouseEvent e){
-        book.popUpMenu.show(e.getComponent(), e.getX(), e.getY());
+        if (e.isPopupTrigger()) {
+        	book.noms.setSelectedIndex(book.noms.locationToIndex(e.getPoint())); 
+        	book.popUpMenu.show(book.noms, e.getX(), e.getY()); //and show the menu
+        }
     }
 }

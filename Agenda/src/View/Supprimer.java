@@ -2,20 +2,22 @@ package View;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Properties;
 
-import javax.swing.JOptionPane;
+import Controller.ContactsController;
 
 public class Supprimer implements ActionListener {
 
+	ContactsController contactsController;
 	AdresseBook book;
 
-	public Supprimer(AdresseBook b) {
+	public Supprimer(AdresseBook b, ContactsController c) {
+		contactsController = c;
 		book = b;
 	}
-
+		
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		book.supprimerP(book.getContacts(), book.nom);
+		contactsController.supprimerContacts();
+		book.setListData();
 	}
 }

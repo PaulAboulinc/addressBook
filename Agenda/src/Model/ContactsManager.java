@@ -9,11 +9,10 @@ import java.util.Collections;
 import java.util.Properties;
 import java.util.Vector;
 
-import javax.swing.JButton;
-
 public class ContactsManager {
 	
 	private boolean change;
+	private String nomSelect;
 	private Properties contacts = new Properties();
 	private Vector<String> listNoms = new Vector<String>();
 	
@@ -30,7 +29,7 @@ public class ContactsManager {
 			e1.printStackTrace();
 		}
 		for (Object s : p.keySet()) {
-			ajouterP(contacts, (String) s, p.getProperty((String) s));
+			ajouterContacts((String) s, p.getProperty((String) s));
 		}
 	}
 
@@ -44,37 +43,28 @@ public class ContactsManager {
 			System.out.println(s + " : " + p.getProperty((String) s));
 		}
 	}
-
-	public void modifierP(Properties p, String key, String value) {
-		if (!value.equals(p.getProperty(key)) && !value.isEmpty()) {
-			p.setProperty(key, value);
-			//setList();
-		}
-	}
-	
-	public void modifierContact(String value, String key) {
-		if (!value.equals(contacts.getProperty(key)) && !value.isEmpty()) {
-			contacts.setProperty(key, value);
-			//setList();
-		}
-	}
-
-	public void ajouterP(Properties p, String key, String value) {
-		p.put(key, value);
-		listNoms.addElement(key);
-		//setList();
-	}
 	
 	public void ajouterContacts(String key, String value) {
 		contacts.put(key, value);
 		listNoms.addElement(key);
-		//setList();
+		setList();
 	}
-
-	public void supprimerP(Properties p, String key) {
-		p.remove(key);
-		listNoms.remove(key);
-		//setList();
+	
+	public void modifierContact(String value) {
+		if (nomSelect != null) {
+			if(!value.equals(contacts.getProperty(nomSelect)) && !value.isEmpty()) {
+				contacts.setProperty(nomSelect, value);
+				setList();
+			}
+		}
+	}
+	
+	public void supprimerContacts() {
+		if (nomSelect != null) {
+			contacts.remove(nomSelect);
+			listNoms.remove(nomSelect);
+			setList();
+		}
 	}
 
 	public void enregistrer() {
@@ -95,12 +85,19 @@ public class ContactsManager {
 		 change = newChange;
 	}
 	
+	public String getNomSelect() {
+		return nomSelect;
+	}
+
+	public void setNomSelect(String newNomSelect) {
+		nomSelect = newNomSelect;
+	}
+	
 	public Properties getContacts() {
 		return contacts;
 	}
 	
 	public Vector<String> getListNoms() {
 		return listNoms;
-	}
-	
+	}	
 }
