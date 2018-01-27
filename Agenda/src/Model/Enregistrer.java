@@ -1,14 +1,15 @@
-package View;
+package Model;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Controller.ContactsController;
+import View.AdresseBook;
 
 public class Enregistrer implements ActionListener{
 	
-	ContactsController contactsController;
-	AdresseBook book;
+	private ContactsController contactsController;
+	private AdresseBook book;
 	
 	public Enregistrer(AdresseBook b, ContactsController c) {
 		contactsController=c;

@@ -1,11 +1,13 @@
-package View;
+package Model;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-class PopUpListener extends MouseAdapter {
+import View.AdresseBook;
+
+public class PopUpListener extends MouseAdapter {
 	
-	AdresseBook book;
+	private AdresseBook book;
 	
     public PopUpListener(AdresseBook adresseBook) {
 		book = adresseBook;

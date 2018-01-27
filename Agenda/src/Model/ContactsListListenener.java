@@ -1,16 +1,17 @@
-package View;
+package Model;
 
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import Controller.ContactsController;
+import View.AdresseBook;
 
 
 public class ContactsListListenener implements ListSelectionListener{
 
-	AdresseBook book;
-	ContactsController contactsController;
+	private AdresseBook book;
+	private ContactsController contactsController;
 	
 	public ContactsListListenener(AdresseBook b, ContactsController c) {
 		book = b;

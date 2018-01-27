@@ -1,21 +1,16 @@
-package View;
+package Model;
 
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Controller.ContactsController;
+import View.AdresseBook;
 
-public class WindowsListener extends JFrame implements WindowListener {
+public class WindowsListener extends WindowAdapter {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	AdresseBook book;
-	ContactsController contactsController;
+	private AdresseBook book;
+	private ContactsController contactsController;
 
 	public WindowsListener(AdresseBook b, ContactsController c) {
 		book = b;
@@ -23,18 +18,10 @@ public class WindowsListener extends JFrame implements WindowListener {
 	}
 
 	@Override
-	public void windowActivated(WindowEvent e) {
-	}
-
-	@Override
-	public void windowClosed(WindowEvent e) {
-	}
-
-	@Override
 	public void windowClosing(WindowEvent e) {
 		if (contactsController.getChange()) {
 			Object[] options = { "Oui", "Non", "Annuler" };
-			int n = JOptionPane.showOptionDialog(this,
+			int n = JOptionPane.showOptionDialog(book,
 					"Sauvegarder les changements ?", "Selectionner une option",
 					JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.QUESTION_MESSAGE, null, // do not use a custom
@@ -56,21 +43,4 @@ public class WindowsListener extends JFrame implements WindowListener {
 			System.exit(0);
 		}
 	}
-
-	@Override
-	public void windowDeactivated(WindowEvent e) {
-	}
-
-	@Override
-	public void windowDeiconified(WindowEvent e) {
-	}
-
-	@Override
-	public void windowIconified(WindowEvent e) {
-	}
-
-	@Override
-	public void windowOpened(WindowEvent e) {
-	}
-
 }

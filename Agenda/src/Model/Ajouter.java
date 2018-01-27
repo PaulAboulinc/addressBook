@@ -1,4 +1,4 @@
-package View;
+package Model;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,11 +6,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import Controller.ContactsController;
+import View.AdresseBook;
 
 public class Ajouter implements ActionListener {
 
-	ContactsController contactsController;
-	AdresseBook book;
+	private ContactsController contactsController;
+	private AdresseBook book;
 
 	public Ajouter(AdresseBook b, ContactsController c) {
 		contactsController = c;
