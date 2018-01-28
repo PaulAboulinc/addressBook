@@ -1,4 +1,4 @@
-package Model;
+package Controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -23,8 +23,8 @@ public class PopUpListener extends MouseAdapter {
 
     private void doPop(MouseEvent e){
         if (e.isPopupTrigger()) {
-        	book.noms.setSelectedIndex(book.noms.locationToIndex(e.getPoint())); 
-        	book.popUpMenu.show(book.noms, e.getX(), e.getY()); //and show the menu
+        	book.getNoms().setSelectedIndex(book.getNoms().locationToIndex(e.getPoint())); 
+        	book.getPopUpMenu().show(book.getNoms(), e.getX(), e.getY()); //and show the menu
         }
     }
 }

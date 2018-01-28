@@ -1,9 +1,8 @@
-package Model;
+package Controller;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import Controller.ContactsController;
 import View.AdresseBook;
 
 
@@ -19,20 +18,20 @@ public class InfoDocumentListener implements DocumentListener {
 	
 	@Override
 	public void changedUpdate(DocumentEvent e) {
-		contactsController.modifierContact(adresseBook.infos.getText());
-		contactsController.setEnable(adresseBook.saveBtn);
+		contactsController.modifierContact(adresseBook.getInfosText());
+		contactsController.setEnable(adresseBook.getSaveBtn());
 	}
 
 	@Override
 	public void insertUpdate(DocumentEvent e) {
-		contactsController.modifierContact(adresseBook.infos.getText());
-		contactsController.setEnable(adresseBook.saveBtn);
+		contactsController.modifierContact(adresseBook.getInfosText());
+		contactsController.setEnable(adresseBook.getSaveBtn());
 	}
 
 	@Override
 	public void removeUpdate(DocumentEvent e) {
-		contactsController.modifierContact(adresseBook.infos.getText());
-		contactsController.setEnable(adresseBook.saveBtn);
+		contactsController.modifierContact(adresseBook.getInfosText());
+		contactsController.setEnable(adresseBook.getSaveBtn());
 	}
 
 }

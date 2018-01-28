@@ -1,6 +1,5 @@
 package Controller;
 
-import java.util.Properties;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -10,17 +9,9 @@ import Model.ContactsManager;
 public class ContactsController {
 	
 	private ContactsManager manager = new ContactsManager();
-		
-	public void chargerContacts() {
-		manager.chargerContacts();
-	}
 
 	public void setList() {
 		manager.setList();
-	}
-
-	public void afficherP(Properties p) {
-		manager.afficherP(p);
 	}
 	
 	public void modifierContact(String value) {
@@ -55,14 +46,14 @@ public class ContactsController {
 		manager.setNomSelect(newNomSelect);
 	}
 	
-	public Properties getContacts() {
-		return manager.getContacts();
+	public String getPropertyValue(String key) {
+		return manager.getPropertyValue(key);
 	}
 	
 	public Vector<String> getListNoms() {
 		return manager.getListNoms();
 	}
-
+	
 	public void setEnable(JButton saveBtn) {
 		saveBtn.setEnabled(getChange());
 	}

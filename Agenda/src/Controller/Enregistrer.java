@@ -1,24 +1,23 @@
-package Model;
+package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Controller.ContactsController;
 import View.AdresseBook;
 
-public class Supprimer implements ActionListener {
-
+public class Enregistrer implements ActionListener{
+	
 	private ContactsController contactsController;
 	private AdresseBook book;
-
-	public Supprimer(AdresseBook b, ContactsController c) {
-		contactsController = c;
+	
+	public Enregistrer(AdresseBook b, ContactsController c) {
+		contactsController=c;
 		book = b;
 	}
-		
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		contactsController.supprimerContacts();
-		book.setListData();
+		contactsController.enregistrer();
+		book.getSaveBtn().setEnabled(false);
 	}
 }

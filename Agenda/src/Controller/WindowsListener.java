@@ -1,10 +1,9 @@
-package Model;
+package Controller;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
-import Controller.ContactsController;
 import View.AdresseBook;
 
 public class WindowsListener extends WindowAdapter {

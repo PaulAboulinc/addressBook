@@ -20,7 +20,7 @@ public class ContactsManager {
 		chargerContacts();
 	}
 		
-	public void chargerContacts() {
+	private void chargerContacts() {
 		String fileLocation = "contacts.properties";
 		Properties p = new Properties();
 		try (InputStream in = new FileInputStream(fileLocation)) {
@@ -37,17 +37,15 @@ public class ContactsManager {
 		change = true;
 		Collections.sort(listNoms);
 	}
-
-	public void afficherP(Properties p) {
-		for (Object s : p.keySet()) {
-			System.out.println(s + " : " + p.getProperty((String) s));
-		}
-	}
 	
 	public void ajouterContacts(String key, String value) {
 		contacts.put(key, value);
 		listNoms.addElement(key);
 		setList();
+	}
+	
+	public String getPropertyValue (String key) {
+		return contacts.getProperty(key);
 	}
 	
 	public void modifierContact(String value) {
@@ -93,11 +91,16 @@ public class ContactsManager {
 		nomSelect = newNomSelect;
 	}
 	
-	public Properties getContacts() {
-		return contacts;
-	}
-	
 	public Vector<String> getListNoms() {
 		return listNoms;
 	}	
+	
+	public String toString() {
+		String affichage = "---------------------------------Début--------------------------------------------"+"\n";
+		for (Object key : contacts.keySet()) {
+			affichage += key + " : " + contacts.getProperty((String) key) + "\n";
+		}
+		affichage += "---------------------------------Fin---------------------------------"+"\n";
+		return affichage;
+	}
 }

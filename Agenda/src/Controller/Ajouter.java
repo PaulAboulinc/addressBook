@@ -1,11 +1,10 @@
-package Model;
+package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import Controller.ContactsController;
 import View.AdresseBook;
 
 public class Ajouter implements ActionListener {
@@ -20,10 +19,10 @@ public class Ajouter implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String nom = JOptionPane.showInputDialog("Entrez le nom souhaité : ");
+		String nom = JOptionPane.showInputDialog(book.getStringFromBundle("Ajout_Nom"));
 		String valeur="";
 		if (nom != null && !nom.trim().isEmpty()) {
-			valeur = JOptionPane.showInputDialog("Entrez les informations : ");
+			valeur = JOptionPane.showInputDialog(book.getStringFromBundle("Ajout_Informations"));
 		}
 		if (valeur != null && !valeur.trim().isEmpty()) {
 			contactsController.ajouterContacts(nom, valeur);
