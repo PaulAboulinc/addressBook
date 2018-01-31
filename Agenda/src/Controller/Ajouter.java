@@ -3,30 +3,41 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
 import View.AdresseBook;
+import View.CreationContact;
 
+/**
+ * La classe Ajouter écoute l'action d'ajout
+ * 
+ * @author ABOULINC
+ *
+ */
 public class Ajouter implements ActionListener {
 
-	private ContactsController contactsController;
+	/**
+	 * Instance de la fenetre principale
+	 */
 	private AdresseBook book;
-
+	/**
+	 * Instance du controller de l'application
+	 */
+	private ContactsController contactsController;
+	
+	/**
+	 * Constructeur de la classe Ajouter
+	 * @param b Instance AdresseBook
+	 * @param c Instance ContactsController
+	 */
 	public Ajouter(AdresseBook b, ContactsController c) {
 		contactsController = c;
 		book = b;
 	}
 
+	/**
+	 * Crée une fenetre "CreationContact" qui contient le formulaire de création.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String nom = JOptionPane.showInputDialog(book.getStringFromBundle("Ajout_Nom"));
-		String valeur="";
-		if (nom != null && !nom.trim().isEmpty()) {
-			valeur = JOptionPane.showInputDialog(book.getStringFromBundle("Ajout_Informations"));
-		}
-		if (valeur != null && !valeur.trim().isEmpty()) {
-			contactsController.ajouterContacts(nom, valeur);
-			book.setListData();
-		}
+		new CreationContact(book, contactsController);
 	}
 }
